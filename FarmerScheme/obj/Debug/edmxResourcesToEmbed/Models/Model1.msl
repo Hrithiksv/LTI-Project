@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="FarmerSchemeModelStoreContainer" CdmEntityContainer="FarmerSchemeEntities">
+    <EntitySetMapping Name="Farmers">
+      <EntityTypeMapping TypeName="FarmerSchemeModel.Farmer">
+        <MappingFragment StoreEntitySet="Farmer">
+          <ScalarProperty Name="FarmerID" ColumnName="FarmerID" />
+          <ScalarProperty Name="FFullName" ColumnName="FFullName" />
+          <ScalarProperty Name="FContactNo" ColumnName="FContactNo" />
+          <ScalarProperty Name="FEmailID" ColumnName="FEmailID" />
+          <ScalarProperty Name="FAddress1" ColumnName="FAddress1" />
+          <ScalarProperty Name="FAddress2" ColumnName="FAddress2" />
+          <ScalarProperty Name="FCity" ColumnName="FCity" />
+          <ScalarProperty Name="FState" ColumnName="FState" />
+          <ScalarProperty Name="FPincode" ColumnName="FPincode" />
+          <ScalarProperty Name="FLandAddress" ColumnName="FLandAddress" />
+          <ScalarProperty Name="FLandArrea" ColumnName="FLandArrea" />
+          <ScalarProperty Name="FLandPincode" ColumnName="FLandPincode" />
+          <ScalarProperty Name="FAccountNo" ColumnName="FAccountNo" />
+          <ScalarProperty Name="FIfsc" ColumnName="FIfsc" />
+          <ScalarProperty Name="FAadhaar" ColumnName="FAadhaar" />
+          <ScalarProperty Name="FPan" ColumnName="FPan" />
+          <ScalarProperty Name="FCertificate" ColumnName="FCertificate" />
+          <ScalarProperty Name="FPassword" ColumnName="FPassword" />
+          <ScalarProperty Name="FApprovalStatus" ColumnName="FApprovalStatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Crops">
+      <EntityTypeMapping TypeName="FarmerSchemeModel.Crop">
+        <MappingFragment StoreEntitySet="Crop">
+          <ScalarProperty Name="BasePrice" ColumnName="BasePrice" />
+          <ScalarProperty Name="CropApprovalDate" ColumnName="CropApprovalDate" />
+          <ScalarProperty Name="CropApproval" ColumnName="CropApproval" />
+          <ScalarProperty Name="PHCertificate" ColumnName="PHCertificate" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="FertilizerType" ColumnName="FertilizerType" />
+          <ScalarProperty Name="CropName" ColumnName="CropName" />
+          <ScalarProperty Name="CropType" ColumnName="CropType" />
+          <ScalarProperty Name="FarmerId" ColumnName="FarmerId" />
+          <ScalarProperty Name="CropId" ColumnName="CropId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="FarmerSchemeModel.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="UserType" ColumnName="UserType" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="EmailID" ColumnName="EmailID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

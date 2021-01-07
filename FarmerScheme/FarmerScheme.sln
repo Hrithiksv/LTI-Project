@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30804.86
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FarmerScheme", "FarmerScheme.csproj", "{58EF6FFB-6D54-4D77-B012-1AF73E209254}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{58EF6FFB-6D54-4D77-B012-1AF73E209254}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58EF6FFB-6D54-4D77-B012-1AF73E209254}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58EF6FFB-6D54-4D77-B012-1AF73E209254}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58EF6FFB-6D54-4D77-B012-1AF73E209254}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {32A8DD2E-2338-4335-8C3E-31571C88E71F}
+	EndGlobalSection
+EndGlobal

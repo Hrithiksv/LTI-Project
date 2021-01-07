@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FarmerSchemeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Crop">
+    <Key>
+      <PropertyRef Name="CropId" />
+    </Key>
+    <Property Name="CropId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FarmerId" Type="int" />
+    <Property Name="CropType" Type="varchar" MaxLength="50" />
+    <Property Name="CropName" Type="varchar" MaxLength="50" />
+    <Property Name="FertilizerType" Type="varchar" MaxLength="50" />
+    <Property Name="Quantity" Type="int" />
+    <Property Name="PHCertificate" Type="varchar" MaxLength="20" />
+    <Property Name="CropApproval" Type="varchar" MaxLength="1" />
+    <Property Name="CropApprovalDate" Type="date" />
+    <Property Name="BasePrice" Type="int" />
+  </EntityType>
+  <EntityType Name="Farmer">
+    <Key>
+      <PropertyRef Name="FarmerID" />
+    </Key>
+    <Property Name="FarmerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FFullName" Type="varchar" MaxLength="30" />
+    <Property Name="FContactNo" Type="varchar" MaxLength="20" />
+    <Property Name="FEmailID" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="FAddress1" Type="varchar" MaxLength="50" />
+    <Property Name="FAddress2" Type="varchar" MaxLength="50" />
+    <Property Name="FCity" Type="varchar" MaxLength="20" />
+    <Property Name="FState" Type="varchar" MaxLength="20" />
+    <Property Name="FPincode" Type="varchar" MaxLength="10" />
+    <Property Name="FLandAddress" Type="varchar" MaxLength="50" />
+    <Property Name="FLandArrea" Type="varchar" MaxLength="50" />
+    <Property Name="FLandPincode" Type="varchar" MaxLength="10" />
+    <Property Name="FAccountNo" Type="int" />
+    <Property Name="FIfsc" Type="varchar" MaxLength="20" />
+    <Property Name="FAadhaar" Type="varchar" MaxLength="20" />
+    <Property Name="FPan" Type="varchar" MaxLength="20" />
+    <Property Name="FCertificate" Type="varchar" MaxLength="20" />
+    <Property Name="FPassword" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="FApprovalStatus" Type="varchar" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="EmailID" />
+    </Key>
+    <Property Name="EmailID" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="UserType" Type="varchar" MaxLength="10" />
+  </EntityType>
+  <Association Name="FK__Crop__FarmerId__2E1BDC42">
+    <End Role="Farmer" Type="Self.Farmer" Multiplicity="0..1" />
+    <End Role="Crop" Type="Self.Crop" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Farmer">
+        <PropertyRef Name="FarmerID" />
+      </Principal>
+      <Dependent Role="Crop">
+        <PropertyRef Name="FarmerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Farmer__FEmailID__267ABA7A">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="Farmer" Type="Self.Farmer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="EmailID" />
+      </Principal>
+      <Dependent Role="Farmer">
+        <PropertyRef Name="FEmailID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="FarmerSchemeModelStoreContainer">
+    <EntitySet Name="Crop" EntityType="Self.Crop" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Farmer" EntityType="Self.Farmer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Crop__FarmerId__2E1BDC42" Association="Self.FK__Crop__FarmerId__2E1BDC42">
+      <End Role="Farmer" EntitySet="Farmer" />
+      <End Role="Crop" EntitySet="Crop" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Farmer__FEmailID__267ABA7A" Association="Self.FK__Farmer__FEmailID__267ABA7A">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Farmer" EntitySet="Farmer" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

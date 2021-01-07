@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FarmerSchemeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Farmer">
+    <Key>
+      <PropertyRef Name="FarmerID" />
+    </Key>
+    <Property Name="FarmerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FFullName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="FContactNo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="FEmailID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FAddress1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FAddress2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FCity" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="FState" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="FPincode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="FLandAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FLandArrea" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FLandPincode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="FAccountNo" Type="Int32" />
+    <Property Name="FIfsc" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="FAadhaar" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="FPan" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="FCertificate" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="FPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FApprovalStatus" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Crops" Relationship="FarmerSchemeModel.FK__Crop__FarmerId__2E1BDC42" FromRole="Farmer" ToRole="Crop" />
+    <NavigationProperty Name="User" Relationship="FarmerSchemeModel.FK__Farmer__FEmailID__267ABA7A" FromRole="Farmer" ToRole="User" />
+  </EntityType>
+  <EntityContainer Name="FarmerSchemeEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Farmers" EntityType="Self.Farmer" />
+    <EntitySet Name="Crops" EntityType="FarmerSchemeModel.Crop" />
+    <EntitySet Name="Users" EntityType="FarmerSchemeModel.User" />
+    <AssociationSet Name="FK__Crop__FarmerId__2E1BDC42" Association="FarmerSchemeModel.FK__Crop__FarmerId__2E1BDC42">
+      <End Role="Farmer" EntitySet="Farmers" />
+      <End Role="Crop" EntitySet="Crops" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Farmer__FEmailID__267ABA7A" Association="FarmerSchemeModel.FK__Farmer__FEmailID__267ABA7A">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Farmer" EntitySet="Farmers" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Crop">
+    <Key>
+      <PropertyRef Name="CropId" />
+    </Key>
+    <Property Name="CropId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FarmerId" Type="Int32" />
+    <Property Name="CropType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CropName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FertilizerType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Quantity" Type="Int32" />
+    <Property Name="PHCertificate" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="CropApproval" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="CropApprovalDate" Type="DateTime" Precision="0" />
+    <Property Name="BasePrice" Type="Int32" />
+    <NavigationProperty Name="Farmer" Relationship="FarmerSchemeModel.FK__Crop__FarmerId__2E1BDC42" FromRole="Crop" ToRole="Farmer" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="EmailID" />
+    </Key>
+    <Property Name="EmailID" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="UserType" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Farmers" Relationship="FarmerSchemeModel.FK__Farmer__FEmailID__267ABA7A" FromRole="User" ToRole="Farmer" />
+  </EntityType>
+  <Association Name="FK__Crop__FarmerId__2E1BDC42">
+    <End Type="FarmerSchemeModel.Farmer" Role="Farmer" Multiplicity="0..1" />
+    <End Type="FarmerSchemeModel.Crop" Role="Crop" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Farmer">
+        <PropertyRef Name="FarmerID" />
+      </Principal>
+      <Dependent Role="Crop">
+        <PropertyRef Name="FarmerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Farmer__FEmailID__267ABA7A">
+    <End Type="FarmerSchemeModel.User" Role="User" Multiplicity="1" />
+    <End Type="FarmerSchemeModel.Farmer" Role="Farmer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="EmailID" />
+      </Principal>
+      <Dependent Role="Farmer">
+        <PropertyRef Name="FEmailID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
